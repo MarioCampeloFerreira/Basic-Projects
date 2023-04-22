@@ -1,0 +1,70 @@
+import random
+
+
+def get_user_choice():
+    user_choice = input("Choose an option (Rock, Paper, or Scissors): ").lower()
+    return user_choice
+
+
+def get_computer_choice():
+    return random.choice(["rock", "paper", "scissors"])
+
+
+def determine_winner(user_choice, computer_choice):
+    rules = {
+        'rock': 'scissors',
+        'paper': 'rock',
+        'scissors': 'paper'
+    }
+
+    if user_choice == computer_choice:
+        return "tie"
+    elif rules[user_choice] == computer_choice:
+        return "user"
+    else:
+        return "computer"
+
+
+def main():
+    human_count = 0
+    robot_count = 0
+    turn_count = 0
+
+    while human_count < 3 and robot_count < 3:
+        user_choice = get_user_choice()
+
+        if user_choice not in ["rock", "paper", "scissors"]:
+            print("Invalid choice. Please choose Rock, Paper, or Scissors.")
+            continue
+
+        computer_choice = get_computer_choice()
+        print("The computer chose:", computer_choice)
+
+        winner = determine_winner(user_choice, computer_choice)
+
+        if winner == "tie":
+            print("It's a tie!")
+        elif winner == "user":
+            human_count += 1
+            print("You won!")
+        else:
+            robot_count += 1
+            print("You lost!")
+
+        turn_count += 1
+        print(f"Turn: {turn_count}")
+        print(f"Your points: {human_count}")
+        print(f"Robot points: {robot_count}")
+
+    if human_count > robot_count:
+        print("Human! CONGRATS! You won!")
+    else:
+        print("Robot!...You somehow lost to a dumb robot, better luck next time")
+
+    replay = input("Do you want to play again? (y/n): ")
+    if replay.lower() == "y":
+        main()
+
+
+if __name__ == "__main__":
+    main()
