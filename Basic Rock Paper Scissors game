@@ -1,0 +1,74 @@
+import random                                                                                                          
+                                                                                                                       
+Turn_count = 0                                                                                                         
+Turn_limit = False                                                                                                     
+Human_count = 0                                                                                                        
+Robot_count = 0                                                                                                        
+Best_of_3 = False                                                                                                      
+                                                                                                                       
+                                                                                                                       
+while not Best_of_3:                                                                                                   
+                                                                                                                       
+    user_choice = input("""Rock Paper Scissors                                                                         
+    Choose an option (Rock, Paper, or Scissors): """)                                                                  
+                                                                                                                       
+                                                                                                                       
+                                                                                                                       
+                                                                                                                       
+    if user_choice in ["Rock", "Paper", "Scissors"]:                                                                   
+        computer_choice = random.choice(["Rock", "Paper", "Scissors"])                                                 
+        print("The computer chose:", computer_choice)                                                                  
+                                                                                                                       
+                                                                                                                       
+        if user_choice == computer_choice:                                                                             
+            print("Its a tie!")                                                                                        
+        elif user_choice == "Rock" and computer_choice == "Paper":                                                     
+            Robot_count += 1                                                                                           
+            print("You lost :( ")                                                                                      
+        elif user_choice == "Paper" and computer_choice == "Rock":                                                     
+            Human_count += 1                                                                                           
+            print("You Won! ")                                                                                         
+        elif user_choice == "Scissors" and computer_choice == "Rock":                                                  
+            Robot_count += 1                                                                                           
+            print("You Lost!")                                                                                         
+        elif user_choice == "Scissors" and computer_choice == "Paper":                                                 
+            Human_count += 1                                                                                           
+            print("You Won!")                                                                                          
+        elif user_choice == "Paper" and computer_choice == "Scissors":                                                 
+            Robot_count += 1                                                                                           
+            print("You Lost!")                                                                                         
+        elif user_choice == "Rock" and computer_choice == "Scissors":                                                  
+            Human_count += 1                                                                                           
+            print("You Won!")                                                                                          
+        else:                                                                                                          
+            print("Invalid choice. Please choose Rock, Paper, or Scissors.")                                           
+                                                                                                                       
+                                                                                                                       
+    if user_choice in ["Rock", "Paper", "Scissors"] and user_choice != computer_choice:                                
+        Turn_count += 1                                                                                                
+        print("Turn: ", Turn_count)                                                                                    
+        print("Your points: ", Human_count)                                                                            
+        print("Robot points: ",  Robot_count)                                                                          
+                                                                                                                       
+    if Human_count == 3 or Robot_count == 3:                                                                           
+        Best_of_3 = True                                                                                               
+        print("and the winner is...")                                                                                  
+        if Human_count > Robot_count:                                                                                  
+            print("Human!! CONGRATS! you won!!")                                                                       
+        else:                                                                                                          
+            print("Robot!...You somehow lost to a dumb robot, better luck next time")                                  
+        replay = input("Do you want to play again? (y/n): ")                                                           
+        if replay.lower() == "y":                                                                                      
+            Best_of_3 = False                                                                                          
+            Human_count = 0                                                                                            
+            Robot_count = 0                                                                                            
+            Turn_count = 0                                                                                             
+            print("Starting a new game...")                                                                            
+        else:                                                                                                          
+            break                                                                                                      
+                                                                                                                       
+                                                                                                                       
+                                                                                                                       
+                                                                                                                       
+                                                                                                                       
+                                                                                                                       
